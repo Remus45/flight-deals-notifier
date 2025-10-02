@@ -38,9 +38,6 @@ flight-deals/
 ├── .env # Environment variables (not committed)
 └── README.md # Documentation
 
-yaml
-Copy code
-
 ---
 
 ## Setup
